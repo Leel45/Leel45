@@ -1,40 +1,44 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	// Declare and initialize variables
-	var integerVar int = 10
-	var floatVar float64 = 3.14
-	var boolVar bool = true
-	var stringVar string = "Hello, Go!"
+	// If-else-if condition
+	temperature := 75
 
-	// Declare constants
-	const pi float64 = 3.14159265359
-	const gravity float64 = 9.81
+	if temperature > 90 {
+		fmt.Println("It's hot outside!")
+	} else if temperature > 70 {
+		fmt.Println("It's warm outside.")
+	} else {
+		fmt.Println("It's cool outside.")
+	}
 
-	// Perform operations
-	sum := integerVar + int(floatVar)
-	difference := integerVar - int(floatVar)
-	product := integerVar * int(floatVar)
-	quotient := float64(integerVar) / floatVar
-	modulus := integerVar % int(floatVar)
+	// Switch statement with multiple switches
+	day := "Wednesday"
+	switch day {
+	case "Monday", "Tuesday", "Wednesday":
+		fmt.Println("It's a weekday.")
+	case "Thursday", "Friday":
+		fmt.Println("It's almost the weekend!")
+	case "Saturday", "Sunday":
+		fmt.Println("It's the weekend!")
+	default:
+		fmt.Println("Invalid day.")
+	}
 
-	// Display results
-	fmt.Println("Integer Variable:", integerVar)
-	fmt.Println("Float Variable:", floatVar)
-	fmt.Println("Boolean Variable:", boolVar)
-	fmt.Println("String Variable:", stringVar)
-
-	fmt.Println("Constant PI:", pi)
-	fmt.Println("Constant Gravity:", gravity)
-
-	fmt.Println("Sum:", sum)
-	fmt.Println("Difference:", difference)
-	fmt.Println("Product:", product)
-	fmt.Println("Quotient:", quotient)
-	fmt.Println("Modulus:", modulus)
+	// For loop without initialization statement, using break and continue
+	i := 0
+	for {
+		if i >= 5 {
+			break
+		}
+		if i%2 == 0 {
+			i++
+			continue
+		}
+		fmt.Println(i)
+		i++
+	}
 
 }
