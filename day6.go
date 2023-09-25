@@ -4,37 +4,27 @@ import (
 	"fmt"
 )
 
-// Define the Animal interface
-type Animal interface {
-	Speak() string
-}
-
-// Define a Dog struct
-type Dog struct{}
-
-// Implement the Speak method for Dog
-func (d Dog) Speak() string {
-	return "Woof!"
-}
-
-// Define a Cat struct
-type Cat struct{}
-
-// Implement the Speak method for Cat
-func (c Cat) Speak() string {
-	return "Meow!"
+func PrintType(x interface{}) {
+	switch x := x.(type) {
+	case int:
+		fmt.Printf("x is an integer: %d\n", x)
+	case float64:
+		fmt.Printf("x is a float64: %f\n", x)
+	case string:
+		fmt.Printf("x is a string: %s\n", x)
+	default:
+		fmt.Println("Unknown type")
+	}
 }
 
 func main() {
-	// Create instances of Dog and Cat
-	dog := Dog{}
-	cat := Cat{}
+	var a = 42
+	var b = 3.14
+	var c = "Hello, World!"
+	var d = true
 
-	// Create a slice of Animal interfaces and add instances of Dog and Cat to it
-	animals := []Animal{dog, cat}
-
-	// Iterate over the slice of animals and let them speak
-	for _, animal := range animals {
-		fmt.Println(animal.Speak())
-	}
+	PrintType(a)
+	PrintType(b)
+	PrintType(c)
+	PrintType(d)
 }
