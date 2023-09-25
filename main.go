@@ -1,44 +1,52 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+// Define the Company struct
+type Company struct {
+	Name        string
+	Location    string
+	Departments []string
+}
+
+// Method to add a department to the Company's Departments slice
+func (c *Company) AddDepartment(department string) {
+	c.Departments = append(c.Departments, department)
+}
+
+// Function to trim a department from the Company's Departments slice
+func (c *Company) TrimDepartment(departmentToRemove string) {
+	newDepartments := []string{}
+	for _, department := range c.Departments {
+		if department != departmentToRemove {
+			newDepartments = append(newDepartments, department)
+		}
+	}
+	c.Departments = newDepartments
+}
 
 func main() {
-	// If-else-if condition
-	temperature := 75
-
-	if temperature > 90 {
-		fmt.Println("It's hot outside!")
-	} else if temperature > 70 {
-		fmt.Println("It's warm outside.")
-	} else {
-		fmt.Println("It's cool outside.")
+	// Create an instance of the Company struct
+	company := Company{
+		Name:     "Example Inc.",
+		Location: "New York",
 	}
 
-	// Switch statement with multiple switches
-	day := "Wednesday"
-	switch day {
-	case "Monday", "Tuesday", "Wednesday":
-		fmt.Println("It's a weekday.")
-	case "Thursday", "Friday":
-		fmt.Println("It's almost the weekend!")
-	case "Saturday", "Sunday":
-		fmt.Println("It's the weekend!")
-	default:
-		fmt.Println("Invalid day.")
-	}
+	// Add departments to the company
+	company.AddDepartment("HR")
+	company.AddDepartment("Finance")
+	company.AddDepartment("Engineering")
 
-	// For loop without initialization statement, using break and continue
-	i := 0
-	for {
-		if i >= 5 {
-			break
-		}
-		if i%2 == 0 {
-			i++
-			continue
-		}
-		fmt.Println(i)
-		i++
-	}
+	// Print the company's information
+	fmt.Printf("Company Name: %s\n", company.Name)
+	fmt.Printf("Location: %s\n", company.Location)
+	fmt.Printf("Departments: %v\n", company.Departments)
 
+	// Trim a department from the company
+	company.TrimDepartment("HR")
+
+	// Print the updated departments
+	fmt.Printf("Updated Departments: %v\n", company.Departments)
 }
